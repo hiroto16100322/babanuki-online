@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ババ抜きゲーム オンライン版</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>🃏 ババ抜きゲーム</h1>
+
+   <div class="join-panel">
+  <select id="modeSelect">
+    <option value="online">オンライン対戦</option>
+    <option value="cpu">コンピューター対戦</option>
+  </select>
+
+  <input id="nameInput" type="text" placeholder="名前" />
+  <input id="roomInput" type="text" placeholder="部屋ID" value="room1" />
+
+  <button id="joinButton">入室</button>
+  <button id="startButton">開始</button>
+  <button id="bgmToggle">🔇 BGM OFF</button>
+  <audio id="bgm" src="bgm.mp3" loop></audio>
+  <button id="restartButton">リスタート</button>
+</div>
+
+    <div class="status" id="status">部屋に入ってください。</div>
+
+    <div class="board">
+      <div class="player-area player-area-hand">
+        <h2 id="myName">あなた</h2>
+        <div class="hand-stage">
+          <div class="cards fan-cards" id="playerCards"></div>
+          <div class="hand-base"></div>
+        </div>
+      </div>
+
+      <div class="player-area">
+        <h2 id="enemyName">相手</h2>
+        <div class="cards" id="enemyCards"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tequilaOverlay" class="tequila-overlay hidden">
+    <div class="tequila-modal">
+      <div class="shot-glass">🥃</div>
+      <h2>負け…！</h2>
+      <p>テキーラを飲み干した…</p>
+      <button id="closeTequilaButton">もう一回やる</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
